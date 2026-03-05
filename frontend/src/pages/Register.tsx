@@ -39,63 +39,75 @@ export default function Register() {
 
 				<form className="flex flex-col gap-3" onSubmit={handleSubmit}>
 					<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-						<input
-							disabled={isLoading}
-							type="text"
-							placeholder="Full Name"
-							value={name}
-							required
-							onChange={(e) => setName(e.target.value)}
-						/>
-						<input
-							disabled={isLoading}
-							type="email"
-							placeholder="Email"
-							value={email}
-							required
-							onChange={(e) => setEmail(e.target.value)}
-						/>
+						<div className="min-w-0">
+							<input
+								disabled={isLoading}
+								type="text"
+								placeholder="Full Name"
+								value={name}
+								required
+								onChange={(e) => setName(e.target.value)}
+							/>
+						</div>
+						<div className="min-w-0">
+							<input
+								disabled={isLoading}
+								type="email"
+								placeholder="Email"
+								value={email}
+								required
+								onChange={(e) => setEmail(e.target.value)}
+							/>
+						</div>
 					</div>
 
 					<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-						<input
-							disabled={isLoading}
-							type="password"
-							placeholder="Password"
-							value={password}
-							required
-							onChange={(e) => setPassword(e.target.value)}
-						/>
-						<select
-							disabled={isLoading}
-							value={gender}
-							required
-							onChange={(e) => setGender(e.target.value)}
-						>
-							<option value="" disabled>Select Gender</option>
-							<option value="male">Male</option>
-							<option value="female">Female</option>
-							<option value="other">Other</option>
-						</select>
+						<div className="min-w-0">
+							<input
+								disabled={isLoading}
+								type="password"
+								placeholder="Password"
+								value={password}
+								required
+								onChange={(e) => setPassword(e.target.value)}
+							/>
+						</div>
+						<div className="min-w-0">
+							<select
+								disabled={isLoading}
+								value={gender}
+								required
+								onChange={(e) => setGender(e.target.value)}
+							>
+								<option value="" disabled>Select Gender</option>
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+								<option value="other">Other</option>
+							</select>
+						</div>
 					</div>
 
 					<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-						<input
-							disabled={isLoading}
-							type="text"
-							placeholder="Register Number"
-							value={registerNumber}
-							required
-							onChange={(e) => setRegisterNumber(e.target.value)}
-						/>
-						<input
-							disabled={isLoading}
-							type="tel"
-							placeholder="Phone Number"
-							value={phoneNumber}
-							required
-							onChange={(e) => setPhoneNumber(e.target.value)}
-						/>
+						<div className="min-w-0">
+							<input
+								disabled={isLoading}
+								type="text"
+								placeholder="Register Number"
+								value={registerNumber}
+								required
+								onChange={(e) => setRegisterNumber(e.target.value)}
+							/>
+						</div>
+						<div className="min-w-0">
+							<input
+								disabled={isLoading}
+								type="tel"
+								placeholder="Phone Number"
+								value={phoneNumber}
+								required
+								onChange={(e) => setPhoneNumber(e.target.value)}
+							/>
+						</div>
 					</div>
 
 					<input
@@ -113,7 +125,7 @@ export default function Register() {
 							type="checkbox"
 							checked={isSrmStudent}
 							onChange={(e) => setIsSrmStudent(e.target.checked)}
-							className="w-4 h-4 accent-purple-500 cursor-pointer"
+							className="accent-purple-500 cursor-pointer"
 							style={{ width: "1rem", height: "1rem" }}
 						/>
 						SRM KTR student
