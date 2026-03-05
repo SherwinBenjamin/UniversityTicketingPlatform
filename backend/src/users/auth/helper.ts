@@ -2,6 +2,7 @@ import { IUserAuthResObject, IUserAuthSignupReqObj } from "./interface";
 import ErrorHandler from "../../utils/errors.handler";
 import UsersAuthDB from "./db";
 import uniqid from "uniqid";
+import bcrypt from "bcryptjs";
 
 export default class UsersAuthHelper extends UsersAuthDB {
 	protected getUserByEmailHelper = async (
@@ -51,6 +52,9 @@ export default class UsersAuthHelper extends UsersAuthDB {
 		const milan_id = uniqid("MILAN-");
 		const user = await this.createUser({
 			...reqObj,
+			password: await bcrypt.hash(reqObj.password, 10),
+			profile_pic: reqObj.profile_pic || "",
+			ticket_type: reqObj.ticket_type || "online",
 			milan_id: milan_id,
 			created_at: new Date(),
 			updated_at: new Date(),
