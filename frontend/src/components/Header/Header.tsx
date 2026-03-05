@@ -129,6 +129,14 @@ const Header = () => {
 						{isTicketValid ? "Dashboard" : "Tickets"}
 					</Link>
 				</li> */}
+				<li>
+					<Link
+						to="/auth"
+						onClick={() => setClick(false)}
+					>
+						Login / Register
+					</Link>
+				</li>
 			</ul>
 			<div className="hamburger" onClick={handleClick}>
 				{click ? (
