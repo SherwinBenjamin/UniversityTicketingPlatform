@@ -1,6 +1,6 @@
 "use client";
 
-import Header from "@/components/Header/Header";
+
 
 import {
 	Form,
@@ -104,12 +104,12 @@ function CreateEvent() {
 	];
 
 	return (
-		<div className="bg-nBlack">
-			<Header />
-			{staffData.data.user.role === "admin" ? (
+		<div className="">
+	
+			{staffData?.data?.user?.role === "admin" ? (
 				<div>
 					<div className="pl-[5rem] ">
-						<h2 className="pt-[5rem]  text-blue-700 font-[montserrat] font-black text-[2.5rem]  tracking-tight">
+						<h2 className="pt-2  text-blue-700 font-[montserrat] font-black text-[2.5rem]  tracking-tight">
 							Create Event
 						</h2>
 					</div>

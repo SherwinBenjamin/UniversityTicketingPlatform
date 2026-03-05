@@ -1,36 +1,29 @@
-import Header from "@/components/Header/Header";
 import "./Home.css";
 import TicketSold from "@/components/Home/TicketSold";
 import OfflineTicketIssued from "@/components/Home/OfflineTicketIssued";
 import TotalRegistrations from "@/components/Home/TotalRegistrations";
+import TicketCount from "@/components/Home/TicketCount";
 
 function Home() {
-	return (
-		<div className=" relative bg-[#1A1A1B]">
-			<Header />
+  return (
+    <div className="space-y-6">
+      {/* Page intro */}
+      <div>
+        <h2 className="text-white/40 text-sm font-medium uppercase tracking-widest">Overview</h2>
+        <p className="text-white/60 text-sm mt-1">
+          Live stats for Milan 2024 — SRM KTR Cultural Fest
+        </p>
+      </div>
 
-			<main>
-				<section>
-					<div className="homeHero flex justify-center items-center h-56 bg-[#de2449] border-2">
-						<div className="text-center">
-							<h1 className="text-3xl font-bold text-white drop-shadow-lg ">
-								Welcome to the Dashboard
-							</h1>
-							<p className="text-white">
-								You can manage your events and staffs here
-							</p>
-						</div>
-					</div>
-				</section>
-
-				<section className="flex justify-start items-start wrap border-2  flex-col md:flex-row ">
-					<TicketSold />
-					<OfflineTicketIssued />
-					<TotalRegistrations />
-				</section>
-			</main>
-		</div>
-	);
+      {/* Stat cards grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+        <TicketSold />
+        <OfflineTicketIssued />
+        <TotalRegistrations />
+        <TicketCount />
+      </div>
+    </div>
+  );
 }
 
 export default Home;

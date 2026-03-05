@@ -1,41 +1,34 @@
-
 import useTicket from "@/features/Tickets/useTicket";
-import { RefreshCw } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { RefreshCw, Users } from "lucide-react";
+
 function TotalRegistrations() {
-  const { totalRegistrationsData,totalRegistrationsLoading,totalRegistrationsRefetch } = useTicket();
+  const { totalRegistrationsData, totalRegistrationsLoading, totalRegistrationsRefetch } = useTicket();
 
   return (
-    <div> <div className="flex bg-[#1A1A1B] ">
-    <div className=" min-w-[30%] px-4 border-2 bg-[#413d3d]  py-4 m-4 rounded-[0.5rem]  ">
-      <div className="flex items-center justify-start gap-x-4">
-        <h2 className="text-[1.5rem] font-bold drop-shadow-xl text-blue-600 font-['montserrat'] text-start ">
-          Total User Registered
-        </h2>
-        <Button
-          disabled={totalRegistrationsLoading}
-          onClick={() => {
-            totalRegistrationsRefetch();
-          }}
-          className="bg-blue-600 hover:bg-blue-500  text-white text-[1.2rem] rounded-[0.4rem] "
-        >
-          <RefreshCw />
-        </Button>
-      </div>
-      <div className="flex  justify-start items-start pl-5 flex-col text-white">
-        <div className="flex gap-x-8">
-          <p className="text-[1rem] text-['montserrat'] font-bold  ">
-          Total Registrations:{" "}
-          </p>
-          <p className="text-[1rem] ">
-            {totalRegistrationsData?.data?.count}
-          </p>
+    <div className="bg-[#1e2433] border border-white/10 rounded-xl p-5 space-y-4">
+      <div className="flex items-start justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-green-600/20 flex items-center justify-center">
+            <Users size={16} className="text-green-400" />
+          </div>
+          <p className="text-white/60 text-sm font-medium">Registrations</p>
         </div>
-       
+        <button
+          disabled={totalRegistrationsLoading}
+          onClick={() => totalRegistrationsRefetch()}
+          className="text-white/30 hover:text-white/70 transition-colors disabled:opacity-50"
+        >
+          <RefreshCw size={14} className={totalRegistrationsLoading ? "animate-spin" : ""} />
+        </button>
+      </div>
+      <div>
+        <p className="text-3xl font-bold text-white">
+          {totalRegistrationsData?.data?.count ?? "—"}
+        </p>
+        <p className="text-white/30 text-xs mt-1">Total users registered</p>
       </div>
     </div>
-  </div></div>
-  )
+  );
 }
 
-export default TotalRegistrations
+export default TotalRegistrations;

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Header from "@/components/Header/Header";
+
 import BookingCard from "@/components/Users/BookingCard";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
@@ -23,10 +23,10 @@ function BookingDetails() {
   };
 
   return (
-    <div className="bg-[#1A1A1B] font-['montserrat'] ">
-      <Header />
+    <div className="font-[montserrat]">
+    
       <div className="md:px-[5rem]   ">
-        <h2 className="md:pt-[5rem] pt-[7rem] px-[1rem] md:px-0  text-blue-700 font-[montserrat] font-black text-[2.5rem]  tracking-tight">
+        <h2 className="md:pt-2 pt-2 px-[1rem] md:px-0  text-blue-700 font-[montserrat] font-black text-[2.5rem]  tracking-tight">
           Booking Details
         </h2>
 

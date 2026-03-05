@@ -1,4 +1,4 @@
-import Header from "@/components/Header/Header";
+
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
 import useBooking from "@/features/Booking/useBooking";
@@ -52,10 +52,10 @@ function HandleUser() {
   };
   const{staffData}=useStaff();
   return (
-    <div className="bg-[#1A1A1B]  ">
-      <Header />
+    <div className="">
+    
       <div className="pl-[5rem]  ">
-        <h2 className="pt-[5rem]  text-blue-700 font-[montserrat] font-black text-[2.5rem]  tracking-tight">
+        <h2 className="pt-2  text-blue-700 font-[montserrat] font-black text-[2.5rem]  tracking-tight">
           User Details
         </h2>
       </div>
@@ -220,7 +220,7 @@ function HandleUser() {
           )}
         </section>
         {
-          (staffData.data.user.role === "admin")?(
+          (staffData?.data?.user?.role === "admin")?(
             <section className="py-[2.5rem] ">
             <h2 className="pt-[2rem]  text-red-600 font-[montserrat] font-black text-[2.5rem]  tracking-tight">
               Delete User

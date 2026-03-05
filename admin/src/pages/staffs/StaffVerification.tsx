@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Header from "@/components/Header/Header";
+
 import useStaff from "@/features/Staffs/useStaff";
 import { Skeleton } from "@/components/ui/skeleton";
 import VerificationTable from "@/components/staffs/VerificationTable";
@@ -38,10 +38,10 @@ function StaffVerification() {
   };
 
   return (
-    <div className="bg-nBlack">
-      <Header />
+    <div className="">
+    
       <div className="staffVerificationContent px-[5rem] ">
-        <h2 className="pt-[5rem]  text-blue-700 font-[montserrat] font-black text-[2.5rem]  tracking-tight">
+        <h2 className="pt-2  text-blue-700 font-[montserrat] font-black text-[2.5rem]  tracking-tight">
           Verification
         </h2>
 

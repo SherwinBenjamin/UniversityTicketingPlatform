@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Header from "@/components/Header/Header";
+
 import { Skeleton } from "@/components/ui/skeleton";
 import useEvents from "@/features/Events/useEvents";
 import React from "react";
@@ -192,10 +192,10 @@ function EventList() {
 	// console.log(scope, mode, isGroupEvent);
 
 	return (
-		<div className="bg-nBlack">
-			<Header />
+		<div className="">
+		
 			<div className="pl-[5rem] flex justify-start items-baseline gap-x-3">
-				<h2 className="pt-[5rem]  text-blue-700 font-[montserrat] font-black text-[2.5rem]  tracking-tight">
+				<h2 className="pt-2  text-blue-700 font-[montserrat] font-black text-[2.5rem]  tracking-tight">
 					Events List
 				</h2>
 				<Button
@@ -307,7 +307,7 @@ function EventList() {
 													<TableHead className="text-white font-bold text-[1rem] font-[montserrat] ">
 														mode
 													</TableHead>
-													{staffData.data.user.role === "admin" && (
+													{staffData?.data?.user?.role === "admin" && (
 														<TableHead className="text-white font-bold text-[1rem] font-[montserrat] ">
 															Actions
 														</TableHead>
@@ -334,7 +334,7 @@ function EventList() {
 															<TableCell>{event.max_cap}</TableCell>
 															<TableCell>{event.mode}</TableCell>
 															<TableCell>
-																{staffData.data.user.role === "admin" && (
+																{staffData?.data?.user?.role === "admin" && (
 																	<div className="flex justify-start items-center">
 																		<Dialog>
 																			<DialogTrigger>

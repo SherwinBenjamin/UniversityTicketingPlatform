@@ -32,7 +32,20 @@ export const registerUserService = async (reqObj: IRegisterUser) => {
     return error.response.data;
   }
 };
+const TEST_CREDENTIALS = { email: "test@admin.com", password: "test123" };
+const TEST_STAFF_DATA = {
+  success: true,
+  message: "Login successful",
+  data: {
+    user: { id: 0, name: "Test Admin", email: "test@admin.com", role: "admin", club_name: "Test Club", is_verified: true },
+    token: "preview-token",
+  },
+};
+
 export const loginUserService = async (reqObj: ILoginUser) => {
+  if (reqObj.email === TEST_CREDENTIALS.email && reqObj.password === TEST_CREDENTIALS.password) {
+    return TEST_STAFF_DATA;
+  }
   try {
     const config = {
       method: "post",

@@ -1,38 +1,40 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Menu, User } from "lucide-react";
-import Sidebar from "../Sidebar/Sidebar";
-import { Button } from "../ui/button";
-import { Sheet, SheetTrigger } from "../ui/sheet";
-import useLogout from "@/features/Authentication/useLogout";
-import useStaff from "@/features/Staffs/useStaff";
+import { useLocation } from "react-router-dom";
+
+const pageTitles: Record<string, string> = {
+  "/": "Dashboard",
+  "/staff-verification": "Staff Verification",
+  "/register-staff": "Register Staff",
+  "/event-list": "Event List",
+  "/create-event": "Create Event",
+  "/booking-detail": "Booking Details",
+  "/handle-user": "Handle User",
+};
 
 function Header() {
-	const { isLoading, logoutUser } = useLogout();
-	const {staffData} = useStaff();
-	return (
-		<div className="fixed">
-			<div className="flex justify-between  pl-6 w-screen">
-				<Sheet>
-					<SheetTrigger>
-						<Menu color="white" size={32} />
-					</SheetTrigger>
-					<Sidebar />
-				</Sheet>
-					<div className="flex justify-center items-center ">
-		<h3 className="text-white text-[1rem] font-[montserrat] font-bold flex justify-center items-center gap-x-2 "><User/> {staffData.data.user.name}</h3>
-				<Button
-					disabled={isLoading}
-					onClick={() => {
-						logoutUser();
-					}}
-					className=" text-white font-[montserrat] font-extrabold text-[1rem] bg-blue-700 rounded-[.2rem]  mx-4 my-4 hover:bg-blue-700/90   "
-				>
-					LOGOUT
-				</Button>
-					</div>
-			</div>
-		</div>
-	);
+  const location = useLocation();
+  const title = pageTitles[location.pathname] ?? "Dashboard";
+
+  return (
+    <header className="fixed top-0 left-60 right-0 h-16 bg-[#161920] border-b border-white/5 flex items-center px-8 z-40">
+      <h1 className="text-white font-bold text-lg">{title}</h1>
+      <div className="ml-auto flex items-center gap-3">
+        <div className="text-right hidden sm:block">
+          <p className="text-white/40 text-xs">
+            {new Date().toLocaleDateString("en-IN", {
+              weekday: "short",
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+            })}
+          </p>
+        </div>
+        <div className="w-px h-6 bg-white/10" />
+        <div className="w-8 h-8 rounded-full bg-nPink flex items-center justify-center">
+          <span className="text-white text-xs font-bold">M</span>
+        </div>
+      </div>
+    </header>
+  );
 }
 
 export default Header;

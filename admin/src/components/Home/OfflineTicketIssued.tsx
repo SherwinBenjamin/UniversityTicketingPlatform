@@ -1,56 +1,39 @@
-
 import useTicket from "@/features/Tickets/useTicket";
-import { RefreshCw } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { RefreshCw, Printer } from "lucide-react";
 
 function OfflineTicketIssued() {
-    const { offlineTicketIssuedData,offlineTicketIssuedLoading,offlineTicketIssuedRefetch } = useTicket();
+  const { offlineTicketIssuedData, offlineTicketIssuedLoading, offlineTicketIssuedRefetch } = useTicket();
+  const counts = offlineTicketIssuedData?.data?.ticket_counts;
+
   return (
-    <div> <div className="flex bg-[#1A1A1B] ">
-    <div className=" min-w-[30%] px-4 border-2 bg-[#413d3d]  py-4 m-4 rounded-[0.5rem]  ">
-      <div className="flex items-center justify-start gap-x-4">
-        <h2 className="text-[1.5rem] font-bold drop-shadow-xl text-blue-600 font-['montserrat'] text-start ">
-          Total Physical ticket issued
-        </h2>
-        <Button
+    <div className="bg-[#1e2433] border border-white/10 rounded-xl p-5 space-y-4">
+      <div className="flex items-start justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-nPink/20 flex items-center justify-center">
+            <Printer size={16} className="text-nPink" />
+          </div>
+          <p className="text-white/60 text-sm font-medium">Physical Tickets</p>
+        </div>
+        <button
           disabled={offlineTicketIssuedLoading}
-          onClick={() => {
-            offlineTicketIssuedRefetch();
-          }}
-          className="bg-blue-600 hover:bg-blue-500  text-white text-[1.2rem] rounded-[0.4rem] "
+          onClick={() => offlineTicketIssuedRefetch()}
+          className="text-white/30 hover:text-white/70 transition-colors disabled:opacity-50"
         >
-          <RefreshCw />
-        </Button>
+          <RefreshCw size={14} className={offlineTicketIssuedLoading ? "animate-spin" : ""} />
+        </button>
       </div>
-      <div className="flex  justify-start items-start pl-5 flex-col text-white">
-        <div className="flex gap-x-8">
-          <p className="text-[1rem] text-['montserrat'] font-bold  ">
-            Ticket 1:{" "}
-          </p>
-          <p className="text-[1rem] ">
-            {offlineTicketIssuedData?.data?.ticket_counts?.ticket_1}
-          </p>
-        </div>
-        <div className="flex gap-x-8">
-          <p className="text-[1rem] text-['montserrat'] font-bold  ">
-            Ticket 2:{" "}
-          </p>
-          <p className="text-[1rem] ">
-            {offlineTicketIssuedData?.data?.ticket_counts?.ticket_2}
-          </p>
-        </div>
-        <div className="flex gap-x-8">
-          <p className="text-[1rem] text-['montserrat'] font-bold  ">
-            Ticket 3:{" "}
-          </p>
-          <p className="text-[1rem] ">
-            {offlineTicketIssuedData?.data?.ticket_counts?.ticket_3}
-          </p>
-        </div>
+      <div className="space-y-2">
+        {[1, 2, 3].map((n) => (
+          <div key={n} className="flex items-center justify-between">
+            <span className="text-white/40 text-xs">Ticket {n}</span>
+            <span className="text-white font-semibold text-sm">
+              {counts?.[`ticket_${n}` as keyof typeof counts] ?? "—"}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
-  </div></div>
-  )
+  );
 }
 
-export default OfflineTicketIssued
+export default OfflineTicketIssued;
