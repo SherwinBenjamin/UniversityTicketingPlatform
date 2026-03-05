@@ -6,9 +6,9 @@ A full-stack event registration and ticketing system built for **Milan 2024**, t
 
 | Service | URL |
 |---|---|
-| Student Portal | _coming soon_ |
-| Admin Dashboard | _coming soon_ |
-| API | _coming soon_ |
+| Student Portal | https://university-ticketing-platform-front.vercel.app |
+| Admin Dashboard | https://university-ticketing-platform-admin.vercel.app |
+| API | https://universityticketingplatform.onrender.com |
 
 > **Demo Note:** No real financial transactions. Payment and ticket states in this demo are simulated via pre-seeded data only.
 
@@ -20,7 +20,7 @@ A full-stack event registration and ticketing system built for **Milan 2024**, t
 | Viewer Staff | `viewer@milandemo.com` | `Viewer@demo123` |
 | Student | `alice@milandemo.com` | `Student@demo123` |
 
-### 3-Step Recruiter Test
+### Quick Test
 
 1. **Student flow** — Open the Student Portal → Register a new account (or log in as `alice@milandemo.com`) → Browse the seeded events.
 2. **Admin flow** — Open the Admin Dashboard → Log in as `admin@milandemo.com` → View bookings, live ticket count, and event management.
