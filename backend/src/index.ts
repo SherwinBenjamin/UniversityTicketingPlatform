@@ -17,19 +17,14 @@ const port = process.env.PORT || 5000;
 //Security
 // app.use(hpp());
 app.use(helmet());
+const corsOrigins = (process.env.CORS_ORIGINS || "http://localhost:5173,http://localhost:5174")
+	.split(",")
+	.map((s) => s.trim())
+	.filter(Boolean);
+
 app.use(
 	cors({
-		origin: [
-			"http://localhost:5173",
-			"http://localhost:5174",
-			"https://srmmilan.org",
-			"https://www.srmmilan.org",
-			"https://admin.srmmilan.org",
-			"https://frontend-deploy.d21g3rd3fhuqgv.amplifyapp.com",
-			"https://deployed.dbtuyvk3p4wbw.amplifyapp.com",
-			"https://dev9501.d1rexfnjrhb8nq.amplifyapp.com",
-			"https://ankit-dev.dbtuyvk3p4wbw.amplifyapp.com",
-		],
+		origin: corsOrigins,
 		credentials: true,
 	})
 );
@@ -37,8 +32,8 @@ app.use(
 app.use(
 	cookieSession({
 		name: "session",
-		keys: ["milan-auth"],
-		maxAge: 24 * 60 * 60 * 1000, // 5 seconds
+		keys: [process.env.COOKIE_SESSION_KEY || "milan-auth-dev"],
+		maxAge: 24 * 60 * 60 * 1000,
 	})
 );
 
@@ -114,6 +109,6 @@ app.use(
 	}
 );
 
-app.listen(process.env.PORT, () => {
+app.listen(port, () => {
 	logger(`Server is running on port ${port}`, LogTypes.LOGS);
 });

@@ -8,8 +8,8 @@ const router = Router();
 const { execute } = new StaffController();
 const { protectStaff, adminAccess, viewerAndAdminAccess } =
 	new IStaffValidation();
-	
-router.get("/getUserByUserID/:userId", execute);
+
+router.get("/getUserByUserID/:userId", protectStaff, adminAccess, execute);
 
 router.get("/current", protectStaff, execute);
 router.get("/", protectStaff, viewerAndAdminAccess, execute);
@@ -35,6 +35,6 @@ router.post("/verify", protectStaff, execute);
 router.post("/deny", protectStaff, execute);
 router.get("/logout", execute);
 router.delete("/deleteUser/:userId", protectStaff, adminAccess, execute);
-router.delete("/deleteStaff/:staffId", protectStaff, param("staffId").escape(), execute);
-// router.get("/getUserByUserID/:userId", protectStaff, adminAccess, execute);
+router.delete("/deleteStaff/:staffId", protectStaff, adminAccess, param("staffId").escape(), execute);
+
 export default router;

@@ -10,10 +10,26 @@ A full-stack event registration and ticketing system built for **Milan 2024**, t
 | Admin Dashboard | _coming soon_ |
 | API | _coming soon_ |
 
+> **Demo Note:** No real financial transactions. Payment and ticket states in this demo are simulated via pre-seeded data only.
+
+## Demo Credentials
+
+| Role | Email | Password |
+|------|-------|----------|
+| Admin Staff | `admin@milandemo.com` | `Admin@demo123` |
+| Viewer Staff | `viewer@milandemo.com` | `Viewer@demo123` |
+| Student | `alice@milandemo.com` | `Student@demo123` |
+
+### 3-Step Recruiter Test
+
+1. **Student flow** — Open the Student Portal → Register a new account (or log in as `alice@milandemo.com`) → Browse the seeded events.
+2. **Admin flow** — Open the Admin Dashboard → Log in as `admin@milandemo.com` → View bookings, live ticket count, and event management.
+3. **Verify protection** — Try calling `DELETE /api/events/MUSIC-001` without a valid session cookie — expect `401 Unauthorized`.
+
 ## Features
 
 **Student Portal**
-- Google OAuth + JWT-based authentication
+- Email + password registration and JWT-based authentication
 - Browse and register for 15+ event categories (Dance, Music, Gaming, Fashion, etc.)
 - Real-time ticket issuance and booking management
 - Responsive UI with Framer Motion animations
@@ -41,7 +57,7 @@ A full-stack event registration and ticketing system built for **Milan 2024**, t
 | Admin Frontend | React 18, TypeScript, Vite, Tailwind CSS, Chakra UI, TanStack Query |
 | Backend | Node.js, Express, TypeScript |
 | Database | PostgreSQL (AWS RDS / Vercel Postgres) |
-| Auth | JWT, Google OAuth 2.0, Cookie Sessions |
+| Auth | JWT, Email/Password, Cookie Sessions |
 | Cloud | AWS SQS, AWS Elastic Beanstalk |
 | Logging | Discord Webhooks, Pino |
 | DevOps | Docker, Docker Compose, Nginx |
@@ -133,8 +149,8 @@ docker-compose up --build
 
 | Method | Endpoint | Description |
 |---|---|---|
-| POST | `/api/users/auth/register` | Register student |
-| POST | `/api/users/auth/login` | Login student |
+| POST | `/api/users/register` | Register student |
+| POST | `/api/users/login` | Login student |
 | GET | `/api/events` | List all events |
 | POST | `/api/events/register` | Register for event |
 | GET | `/api/bookings` | Get user bookings |

@@ -33,8 +33,12 @@ export default class UsersAuthHelper extends UsersAuthDB {
 		if (isExistingUser) {
 			if (isExistingUser.is_deleted) {
 				const milan_id = uniqid("MILAN-");
+				const hashedPassword = await bcrypt.hash(reqObj.password, 10);
 				const user = await this.reviveUser(isExistingUser.id, {
 					...reqObj,
+					password: hashedPassword,
+					profile_pic: reqObj.profile_pic || "",
+					ticket_type: reqObj.ticket_type || "online",
 					milan_id: milan_id,
 					created_at: new Date(),
 					updated_at: new Date(),

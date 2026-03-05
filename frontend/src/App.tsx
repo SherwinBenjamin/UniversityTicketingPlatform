@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import DashBoard from "./pages/DashBoard";
 import Register from "./pages/Register";
+import Auth from "./pages/Auth";
 import { Toaster } from "@/components/ui/toaster";
 import Home from "./pages/Home/Home";
 import Event from "./pages/Event/Event";
@@ -42,7 +43,8 @@ function App() {
 							
 								<Route path="/" element={<Home />} />
 							<Route path="/event" element={<Event />} />
-							<Route path="/register" element={<Register />} />
+							<Route path="/auth" element={<Auth />} />
+						<Route path="/register" element={<Register />} />
 							<Route path="/event/:name" element={<EventContainer />} />
 							<Route path="/event/music/:id" element={<MusicEventPage />} />
 							<Route path="/event/dance/:id" element={<DanceEventPage />} />

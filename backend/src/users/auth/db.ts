@@ -47,9 +47,13 @@ export default class UsersAuthDB {
 		const {
 			name,
 			email,
+			password,
 			reg_number,
 			is_srm_ktr,
 			gender,
+			profile_pic,
+			ticket_type,
+			college_name,
 			milan_id,
 			phone_number,
 			updated_at,
@@ -60,23 +64,31 @@ export default class UsersAuthDB {
     SET
       name = $1,
       email = $2,
-      reg_number = $3,
-      is_srm_ktr = $4,
-      gender = $5,
-      phone_number = $6,
-      updated_at = $7,
-			milan_id = $8,
+      password = $3,
+      reg_number = $4,
+      is_srm_ktr = $5,
+      gender = $6,
+      phone_number = $7,
+      profile_pic = $8,
+      ticket_type = $9,
+      college_name = $10,
+      updated_at = $11,
+			milan_id = $12,
       is_deleted = false
-      WHERE id = $9
+      WHERE id = $13
       RETURNING *`;
 
 		const values = [
 			name,
 			email,
+			password,
 			reg_number,
 			is_srm_ktr,
 			gender,
 			phone_number,
+			profile_pic ?? "",
+			ticket_type ?? "online",
+			college_name,
 			updated_at,
 			milan_id,
 			id,

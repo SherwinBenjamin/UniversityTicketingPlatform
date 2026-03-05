@@ -11,6 +11,7 @@ import {
 
 import JWTUtils from "../../utils/jwt.utils";
 import UsersAuthHelper from "./helper";
+import bcrypt from "bcryptjs";
 
 export default class UsersAuthService extends UsersAuthHelper {
 	jwtHelper: JWTUtils;
@@ -19,8 +20,25 @@ export default class UsersAuthService extends UsersAuthHelper {
 		this.jwtHelper = new JWTUtils();
 	}
 
-	protected loginService = async (email: string): Promise<any> => {
+	protected loginService = async (email: string, password: string): Promise<any> => {
+		if (!email || !password) {
+			throw new ErrorHandler({
+				status_code: 400,
+				message: "Both email and password are required",
+				message_code: "EMAIL_PASSWORD_REQUIRED",
+			});
+		}
+
 		const user = await this.getUserByEmailHelper(email);
+
+		const isMatch = await bcrypt.compare(password, user.password || "");
+		if (!isMatch) {
+			throw new ErrorHandler({
+				status_code: 401,
+				message: "Invalid credentials",
+				message_code: "INVALID_CREDENTIALS",
+			});
+		}
 
 		const token = await this.jwtHelper.generateTokens({
 			email: user.email,
@@ -28,8 +46,10 @@ export default class UsersAuthService extends UsersAuthHelper {
 			name: user.name,
 		});
 
+		const { password: _pw, ...userWithoutPassword } = user as any;
+
 		const response: AuthObj = {
-			user,
+			user: userWithoutPassword,
 			token: token.access_token,
 		};
 
@@ -46,8 +66,10 @@ export default class UsersAuthService extends UsersAuthHelper {
 			name: user.name,
 		});
 
+		const { password: _pw, ...userWithoutPassword } = user as any;
+
 		const response: AuthObj = {
-			user,
+			user: userWithoutPassword,
 			token: token.access_token,
 		};
 

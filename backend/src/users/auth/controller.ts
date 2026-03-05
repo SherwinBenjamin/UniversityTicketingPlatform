@@ -31,7 +31,8 @@ export default class UsersAuthController extends UsersAuthService {
 				if (method === RequestMethods.POST) {
 					logger(req.body, LogTypes.LOGS);
 					const email = req.body?.email;
-					const authRes: IAuthResponse = await this.loginController(email);
+					const password = req.body?.password;
+					const authRes: IAuthResponse = await this.loginController(email, password);
 					res.cookie("token", authRes.token, {
 						expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
 						httpOnly: true,
@@ -95,8 +96,8 @@ export default class UsersAuthController extends UsersAuthService {
 		}
 	};
 
-	private loginController = async (email: string): Promise<IAuthResponse> => {
-		const data: AuthObj = await this.loginService(email);
+	private loginController = async (email: string, password: string): Promise<IAuthResponse> => {
+		const data: AuthObj = await this.loginService(email, password);
 
 		return {
 			user: {

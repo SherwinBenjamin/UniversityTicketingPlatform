@@ -12,16 +12,16 @@ const useUser = () => {
 	});
 
 	let isAuthenticated = false;
-	let redirectUrl = "/";
+	let redirectUrl = "/auth";
 
 	if (!data) {
 		redirectUrl = "/auth";
 	} else {
 		if (data.success === false) {
-			if (data.message_code === "GOOGLE_LOGIN_REQUIRED") {
-				navigate("/auth")
-			} else if (data.message_code === "USER_NOT_FOUND") {
-				navigate("/register")
+			if (data.message_code === "USER_NOT_FOUND") {
+				navigate("/register");
+			} else {
+				navigate("/auth");
 			}
 		} else {
 			queryClient.setQueryData(["user"], data);

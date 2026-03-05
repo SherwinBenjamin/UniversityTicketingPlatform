@@ -86,7 +86,7 @@ export default class BookingsDB {
 		const result: any = res.rows[0];
 
 		// If there are no rows, return null
-		const count = result ? result.count : null;
+		const count = result ? result.email_count : null;
 
 		return count as unknown as any;
 	};

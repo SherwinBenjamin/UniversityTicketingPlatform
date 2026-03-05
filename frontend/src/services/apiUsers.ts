@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
 	getCurrentUserApi,
+	loginUserApi,
 	logoutUserApi,
 	registerUserApi,
 } from "@/APIs/users";
@@ -13,6 +14,23 @@ export async function getCurrentUser() {
 		});
 		const data = await response.json();
 
+		return data;
+	} catch (error: any) {
+		return error.response.data;
+	}
+}
+
+export async function loginUser(user: { email: string; password: string }) {
+	try {
+		const response = await fetch(loginUserApi, {
+			credentials: "include",
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(user),
+		});
+		const data = await response.json();
 		return data;
 	} catch (error: any) {
 		return error.response.data;

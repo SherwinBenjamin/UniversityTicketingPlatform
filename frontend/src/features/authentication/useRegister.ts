@@ -3,6 +3,10 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
 export interface UserRegisterProps {
+	name: string;
+	email: string;
+	password: string;
+	gender: string;
 	reg_number: string;
 	phone_number: number;
 	is_srm_ktr: boolean;
