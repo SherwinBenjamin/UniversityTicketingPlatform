@@ -2,21 +2,23 @@ import useLogin from "@/features/authentication/useLogin";
 import React from "react";
 
 export default function Auth() {
-	const { isLoading, login } = useLogin();
+	const { isLoading, login, error } = useLogin();
 
 	const [email, setEmail] = React.useState("");
 	const [password, setPassword] = React.useState("");
-	const [errorMsg, setErrorMsg] = React.useState("");
+	const [serverErrorMsg, setServerErrorMsg] = React.useState("");
+
+	const errorMsg = serverErrorMsg || (error ? (error as Error).message : "");
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		setErrorMsg("");
+		setServerErrorMsg("");
 		login(
 			{ email, password },
 			{
 				onSuccess: (data) => {
 					if (data?.success === false) {
-						setErrorMsg(data?.message || "Login failed. Please try again.");
+						setServerErrorMsg(data?.message || "Login failed. Please try again.");
 					}
 				},
 			}

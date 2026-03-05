@@ -2,7 +2,7 @@ import useRegister from "@/features/authentication/useRegister";
 import React from "react";
 
 export default function Register() {
-	const { isLoading, register } = useRegister();
+	const { isLoading, register, errorMsg } = useRegister();
 
 	const [name, setName] = React.useState("");
 	const [email, setEmail] = React.useState("");
@@ -130,6 +130,10 @@ export default function Register() {
 						/>
 						SRM KTR student
 					</label>
+
+					{errorMsg && (
+						<p className="text-red-400 text-sm text-center">{errorMsg}</p>
+					)}
 
 					<button
 						disabled={isLoading}
