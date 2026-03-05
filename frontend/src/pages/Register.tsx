@@ -30,97 +30,113 @@ export default function Register() {
 	};
 
 	return (
-		<div className="w-full h-full flex flex-col justify-center items-center">
-			<h1 className="text-[5rem] font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+		<div className="w-full min-h-full flex flex-col justify-center items-center py-10">
+			<h1 className="text-[4rem] font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-1">
 				MILAN
 			</h1>
-			<h1 className="font-bold text-[3rem] mb-[3rem]">Signup Form</h1>
-			<form
-				className="flex flex-col gap-5 items-center"
-				onSubmit={handleSubmit}
-			>
-				<input
-					disabled={isLoading}
-					type="text"
-					placeholder="Full Name"
-					value={name}
-					required
-					onChange={(e) => setName(e.target.value)}
-				/>
-				<input
-					disabled={isLoading}
-					type="email"
-					placeholder="Email"
-					value={email}
-					required
-					onChange={(e) => setEmail(e.target.value)}
-				/>
-				<input
-					disabled={isLoading}
-					type="password"
-					placeholder="Password"
-					value={password}
-					required
-					onChange={(e) => setPassword(e.target.value)}
-				/>
-				<select
-					disabled={isLoading}
-					value={gender}
-					required
-					onChange={(e) => setGender(e.target.value)}
-					className="bg-transparent border px-3 py-2 w-full"
-				>
-					<option value="" disabled>Select Gender</option>
-					<option value="male">Male</option>
-					<option value="female">Female</option>
-					<option value="other">Other</option>
-				</select>
-				<input
-					disabled={isLoading}
-					type="text"
-					placeholder="Register Number"
-					value={registerNumber}
-					required
-					onChange={(e) => setRegisterNumber(e.target.value)}
-				/>
-				<input
-					disabled={isLoading}
-					type="text"
-					placeholder="Phone Number"
-					value={phoneNumber}
-					required
-					onChange={(e) => setPhoneNumber(e.target.value)}
-				/>
-				<input
-					disabled={isLoading}
-					type="text"
-					placeholder="College Name"
-					value={collegeName}
-					required
-					onChange={(e) => setCollegeName(e.target.value)}
-				/>
-				<div className="flex justify-center gap-3">
-					<h1>S.R.M student?</h1>
+			<p className="text-white/40 text-sm mb-8 tracking-widest uppercase">National Cultural Fest</p>
+
+			<div className="w-full max-w-lg bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+				<h2 className="text-2xl font-semibold mb-6 text-center">Create Account</h2>
+
+				<form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+					<div className="grid grid-cols-2 gap-4">
+						<input
+							disabled={isLoading}
+							type="text"
+							placeholder="Full Name"
+							value={name}
+							required
+							onChange={(e) => setName(e.target.value)}
+						/>
+						<input
+							disabled={isLoading}
+							type="email"
+							placeholder="Email"
+							value={email}
+							required
+							onChange={(e) => setEmail(e.target.value)}
+						/>
+					</div>
+
+					<div className="grid grid-cols-2 gap-4">
+						<input
+							disabled={isLoading}
+							type="password"
+							placeholder="Password"
+							value={password}
+							required
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+						<select
+							disabled={isLoading}
+							value={gender}
+							required
+							onChange={(e) => setGender(e.target.value)}
+						>
+							<option value="" disabled>Gender</option>
+							<option value="male">Male</option>
+							<option value="female">Female</option>
+							<option value="other">Other</option>
+						</select>
+					</div>
+
+					<div className="grid grid-cols-2 gap-4">
+						<input
+							disabled={isLoading}
+							type="text"
+							placeholder="Register Number"
+							value={registerNumber}
+							required
+							onChange={(e) => setRegisterNumber(e.target.value)}
+						/>
+						<input
+							disabled={isLoading}
+							type="text"
+							placeholder="Phone Number"
+							value={phoneNumber}
+							required
+							onChange={(e) => setPhoneNumber(e.target.value)}
+						/>
+					</div>
+
 					<input
 						disabled={isLoading}
-						type="checkbox"
-						checked={isSrmStudent}
-						onChange={(e) => setIsSrmStudent(e.target.checked)}
+						type="text"
+						placeholder="College Name"
+						value={collegeName}
+						required
+						onChange={(e) => setCollegeName(e.target.value)}
+						style={{ minWidth: "unset" }}
 					/>
-				</div>
-				<button
-					disabled={isLoading}
-					className="px-4 py-2 w-[10rem] mt-[2rem] shadow-md shadow-emerald-300 font-semibold transition-all duration-500 active:bg-green-400"
-				>
-					{isLoading ? "Loading..." : "Register"}
-				</button>
-			</form>
-			<p className="mt-4 text-sm text-gray-400">
-				Already registered?{" "}
-				<a href="/auth" className="text-indigo-400 underline">
-					Login
-				</a>
-			</p>
+
+					<label className="flex items-center gap-3 text-sm text-white/60 cursor-pointer select-none">
+						<input
+							disabled={isLoading}
+							type="checkbox"
+							checked={isSrmStudent}
+							onChange={(e) => setIsSrmStudent(e.target.checked)}
+							style={{ minWidth: "unset", width: "1rem", height: "1rem" }}
+						/>
+						SRM KTR student
+					</label>
+
+					<button
+						disabled={isLoading}
+						type="submit"
+						className="mt-2 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 disabled:opacity-50"
+					>
+						{isLoading ? "Creating account..." : "Register"}
+					</button>
+				</form>
+
+				<p className="mt-5 text-center text-sm text-white/40">
+					Already registered?{" "}
+					<a href="/auth" className="text-indigo-400 hover:text-indigo-300 underline">
+						Login
+					</a>
+				</p>
+			</div>
 		</div>
 	);
 }
