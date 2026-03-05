@@ -1,0 +1,252 @@
+.navbar {
+	font-family: "Poppins";
+	text-transform: uppercase;
+	letter-spacing: 0.15rem;
+	display: flex;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 50px;
+	padding: 10px;
+	transition: transform 0.3s ease-out;
+}
+
+.activel {
+	/* color: red; */
+	border-bottom: 1px solid white;
+}
+
+.navbar.hidden {
+	display: flex;
+	transform: translateY(-100%);
+}
+
+.logo {
+	padding-top: 20px;
+	margin-bottom: -24px;
+	max-width: 200px;
+	height: 100px;
+}
+
+.header {
+	position: fixed;
+	width: 100%;
+	height: 85px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	padding: 1.5rem;
+	z-index: 999;
+}
+
+.nav-menu {
+	display: flex;
+}
+
+.nav-menu li {
+	padding: 0 1rem;
+}
+
+.nav-menu a {
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+.nav-menu .ticket {
+	background: rgb(37, 32, 63);
+	background: linear-gradient(
+		90deg,
+		rgb(54, 47, 92) 0%,
+		rgba(149, 124, 255, 1) 100%
+	);
+	border-radius: 3px;
+	padding: 0.4rem 1.5rem;
+	margin-top: -5px;
+}
+.header h1 {
+	font-weight: 800;
+	font-size: 2rem;
+}
+
+.hamburger {
+	display: none;
+}
+
+.glow-on-hover {
+	padding: 0 1rem;
+	display: flex;
+	width: 150px;
+	height: 40px;
+	border: none;
+	outline: none;
+	background: linear-gradient(
+		45deg,
+		#ff0000,
+		#ff7300,
+		#fffb00,
+		#00ffd5,
+		#002bff,
+		#7a00ff,
+		#ff00c8,
+		#ff0000
+	);
+	cursor: pointer;
+	position: relative;
+	z-index: 0;
+	justify-content: center;
+	align-items: center;
+	border-radius: 40px;
+	margin-top: -8px;
+}
+
+.glow-on-hover:before {
+	content: "";
+	background: linear-gradient(
+		45deg,
+		#ff0000,
+		#ff7300,
+		#fffb00,
+		#00ffd5,
+		#002bff,
+		#7a00ff,
+		#ff00c8,
+		#ff0000
+	);
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	background-size: 400%;
+	z-index: -1;
+	filter: blur(2px);
+	width: calc(100% + 4px);
+	height: calc(100% + 4px);
+	animation: glowing 20s linear infinite;
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out;
+	border-radius: 40px;
+}
+
+@keyframes glowing {
+	0% {
+		background-position: 0 0;
+	}
+	50% {
+		background-position: 400% 0;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@media screen and (max-width: 1240px) {
+	.hamburger {
+		display: block;
+	}
+
+	.nav-menu {
+		position: absolute;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		top: 0;
+		left: -100%;
+		text-align: center;
+		width: 100%;
+		height: 100vh;
+		transition: 0.3s;
+		z-index: -1;
+		/* From https://css.glass */
+		background: rgba(12, 7, 94, 0.19);
+		border-radius: 16px;
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(19.2px);
+		-webkit-backdrop-filter: blur(19.2px);
+
+		/* background: rgba(125, 61, 214, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(18.3px);
+    -webkit-backdrop-filter: blur(18.3px); */
+	}
+
+	.nav-menu.active {
+		left: 0%;
+	}
+
+	.nav-menu li {
+		padding: 1rem 0;
+	}
+
+	.nav-menu a {
+		font-size: 1.5rem;
+	}
+
+	.scroll {
+		display: none;
+	}
+	.glow-on-hover {
+		width: 200px;
+		margin: 0 auto;
+		margin-top: 15px;
+		font-weight: 900;
+		/* border-radius: 6px; */
+	}
+}
+
+@media screen and (max-width: 486px) {
+	.hamburger {
+		display: block;
+	}
+
+	.nav-menu {
+		position: absolute;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		/* padding-left: 100px; */
+		top: 0;
+		left: -100%;
+		text-align: left;
+		width: 100%;
+		height: 100vh;
+		transition: 0.3s;
+
+		z-index: -1;
+		/* From https://css.glass */
+		background: rgba(12, 7, 94, 0.19);
+		border-radius: 16px;
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(19.2px);
+		-webkit-backdrop-filter: blur(19.2px);
+
+		/* background: rgba(125, 61, 214, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(18.3px);
+    -webkit-backdrop-filter: blur(18.3px); */
+	}
+
+	.nav-menu.active {
+		left: 0%;
+	}
+
+	.nav-menu li {
+		padding: 0.4rem 100px;
+	}
+
+	.nav-menu a {
+		font-size: 1.7rem;
+		font-weight: 400;
+	}
+
+	.scroll {
+		display: none;
+	}
+
+	.glow-on-hover {
+		width: 200px;
+		margin: 0 auto;
+		margin-top: 40px;
+		font-weight: 900;
+		/* border-radius: 6px; */
+	}
+}

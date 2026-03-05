@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Milan",
+    "url": "/Images/luck.webp",
+    "text_color": "black"
+  },
+  {
+    "name": "मिलन",
+    "url": "/Images/lucknow.webp",
+    "text_color": "black"
+  },
+  {
+    "name": "மிலன்",
+    "url": "/Images/chennai.webp",
+    "text_color": "black"
+  },
+  {
+    "name": "మిలన్",
+    "url": "/Images/hydr.webp",
+    "text_color": "black"
+  },
+  {
+    "name": "મિલાન",
+    "url": "/Images/guj.webp",
+    "text_color": "black"
+  },
+ 
+  {
+    "name": "মিলান",
+    "url": "/Images/raj.webp",
+    "text_color": "black"
+  }
+]

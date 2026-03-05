@@ -1,0 +1,67 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ticketing_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ticketing_backend
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      PORT: ${PORT:-5000}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_SECRET_PUBLIC: ${JWT_SECRET_PUBLIC}
+      JWT_BOOKING_SECRET: ${JWT_BOOKING_SECRET}
+      AWS_REGION: ${AWS_REGION}
+      SQS_BOOKING_URL: ${SQS_BOOKING_URL}
+      SQS_EMAIL_QUEUE_URL: ${SQS_EMAIL_QUEUE_URL}
+      DISCORD_ERROR_WEBHOOK_URL: ${DISCORD_ERROR_WEBHOOK_URL}
+      DISCORD_INFO_WEBHOOK_URL: ${DISCORD_INFO_WEBHOOK_URL}
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ticketing_frontend
+    restart: unless-stopped
+    environment:
+      VITE_API_URL: ${VITE_API_URL:-http://localhost:5000}
+      VITE_AUTH_URL: ${VITE_AUTH_URL:-http://localhost:5000}
+    ports:
+      - "5173:80"
+
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    container_name: ticketing_admin
+    restart: unless-stopped
+    environment:
+      VITE_API_VAR: ${VITE_API_VAR:-http://localhost:5000}
+    ports:
+      - "5174:80"
+
+volumes:
+  postgres_data:

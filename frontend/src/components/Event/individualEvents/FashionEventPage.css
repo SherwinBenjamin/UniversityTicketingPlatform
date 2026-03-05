@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+.fashion-eventsdata {
+  padding: 5rem 2rem;
+  left: 0px;
+  top: 0px;
+  background: #180c15;
+  /* background: linear-gradient(180deg, #5f2501 0%, #1f1e1f 100%);
+           */
+  /* background-image: url("../../utils//images/eventbg/fashion.svg"); */
+  /* background-size: cover;
+    background-position: center;
+    background-attachment: fixed; */
+}
+
+.fashion-title {
+  font-size: 3em;
+  padding-top: 30px;
+  /* margin: 50px; */
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  justify-content: center;
+  text-align: center;
+  color: #f6c7ea;
+  text-shadow: 0px 0px 7px #fa90df, 0px 0px 10px #f412bc, 0px 0px 21px #f412bc,
+    0px 0px 42px #f412bc, 0px 0px 82px #f412bc, 0px 0px 92px #f412bc;
+}
+
+.fashion-description {
+  font-size: larger;
+  text-align: center;
+  letter-spacing: 1px;
+  margin: 10px 0;
+}
+
+.fashion-content {
+  font-family: "Montserrat", sans-serif;
+  justify-content: center;
+  color: white;
+}
+.fashion-top {
+  margin: 2em 3em;
+  padding: 1em;
+  border-radius: 10px;
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: row;
+  /* margin: 20px; */
+  /* padding: 20px; */
+  justify-content: center;
+  align-items: flex-start;
+  background: #f412bc;
+}
+.fashion-content h2 {
+  text-align: center;
+}
+.fashion-top h3 {
+  padding: 10px 20px;
+  /* color: white; */
+}
+.fashionSubtitle {
+  color: #f412bc;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  /* padding: 10px 10px 10px 4px; */
+}
+.fashion-content2 {
+  background-color: #1f1e1f;
+  background: rgba(228, 189, 157, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  justify-content: space-between;
+}
+.fashionc-rules {
+  padding: 4px 5px 5px 5px;
+}
+.fashion-content {
+  /* margin: 50px; */
+  color: #fbd4f4;
+  text-align: left;
+  justify-content: center;
+}
+.fashion-contact {
+  padding-top: 50px;
+  color: white;
+}
+.fashion-contact > h3 {
+  color: #f412bc;
+}
+.fashion-btn {
+  float: right;
+  padding: 30px;
+  margin-top: -77px;
+  /* border: solid 2px black; */
+  background-color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  justify-content: center;
+  color: #1f1e1f;
+}
+.fashion-btn:hover {
+  background-color: #fce6d9;
+  color: black;
+}
+
+.fashion-items {
+  padding: 10px;
+  color: #fbd4f4;
+}
+
+.flexfashion {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+.fashionhead {
+  color: #180c15;
+  font-weight: 600;
+  text-align: left;
+  align-items: flex-start;
+  justify-content: center;
+}
+.fashionMainContent {
+  padding: 20px;
+  margin: 50px;
+  background: #2f0f27;
+  border-radius: 10px;
+}
+.rules {
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 480px) {
+  .fashion-title {
+    font-size: 24px;
+  }
+  .fashion-top {
+    margin: 2em 0.8em;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .fashionMainContent {
+    margin: 30px 10px;
+  }
+  .fashion-eventsdata {
+    background-image: url("../../utils//images/event-gb-mob/fashion.svg");
+    background-attachment: fixed;
+  }
+}

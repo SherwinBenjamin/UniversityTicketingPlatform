@@ -1,0 +1,24 @@
+{
+  "name": "university-ticketing-platform",
+  "version": "1.0.0",
+  "description": "University Event Registration & Ticketing Platform — monorepo",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend",
+    "admin"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=backend\" \"npm run dev --workspace=frontend\" \"npm run dev --workspace=admin\"",
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:admin": "npm run dev --workspace=admin",
+    "build": "npm run build --workspace=backend && npm run build --workspace=frontend && npm run build --workspace=admin",
+    "install:all": "npm install --workspaces"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "author": "Sherwin Benjamin",
+  "license": "ISC"
+}

@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		/* Language and Environment */
+		"target": "es2016",
+
+		/* Modules */
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"types": ["node"],
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+
+		/* Emit */
+		"outDir": "./build",
+
+		/* Type Checking */
+		"strict": true,
+		"skipLibCheck": true
+	}
+}
