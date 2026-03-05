@@ -15,7 +15,7 @@ export default function Register() {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		const data = {
+		register({
 			name,
 			email,
 			password,
@@ -24,23 +24,21 @@ export default function Register() {
 			college_name: collegeName,
 			phone_number: Number(phoneNumber),
 			reg_number: registerNumber,
-		};
-
-		register(data);
+		});
 	};
 
 	return (
-		<div className="w-full min-h-full flex flex-col justify-center items-center py-10">
-			<h1 className="text-[4rem] font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-1">
+		<div className="w-full min-h-full flex flex-col justify-center items-center px-4 py-10">
+			<h1 className="text-[3.5rem] font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-1">
 				MILAN
 			</h1>
-			<p className="text-white/40 text-sm mb-8 tracking-widest uppercase">National Cultural Fest</p>
+			<p className="text-white/40 text-xs mb-8 tracking-widest uppercase">National Cultural Fest</p>
 
-			<div className="w-full max-w-lg bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-				<h2 className="text-2xl font-semibold mb-6 text-center">Create Account</h2>
+			<div className="w-full max-w-lg bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8">
+				<h2 className="text-xl font-semibold mb-5 text-center">Create Account</h2>
 
-				<form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-					<div className="grid grid-cols-2 gap-4">
+				<form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+					<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
 						<input
 							disabled={isLoading}
 							type="text"
@@ -59,7 +57,7 @@ export default function Register() {
 						/>
 					</div>
 
-					<div className="grid grid-cols-2 gap-4">
+					<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
 						<input
 							disabled={isLoading}
 							type="password"
@@ -74,14 +72,14 @@ export default function Register() {
 							required
 							onChange={(e) => setGender(e.target.value)}
 						>
-							<option value="" disabled>Gender</option>
+							<option value="" disabled>Select Gender</option>
 							<option value="male">Male</option>
 							<option value="female">Female</option>
 							<option value="other">Other</option>
 						</select>
 					</div>
 
-					<div className="grid grid-cols-2 gap-4">
+					<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
 						<input
 							disabled={isLoading}
 							type="text"
@@ -92,7 +90,7 @@ export default function Register() {
 						/>
 						<input
 							disabled={isLoading}
-							type="text"
+							type="tel"
 							placeholder="Phone Number"
 							value={phoneNumber}
 							required
@@ -107,16 +105,16 @@ export default function Register() {
 						value={collegeName}
 						required
 						onChange={(e) => setCollegeName(e.target.value)}
-						style={{ minWidth: "unset" }}
 					/>
 
-					<label className="flex items-center gap-3 text-sm text-white/60 cursor-pointer select-none">
+					<label className="flex items-center gap-3 text-sm text-white/50 cursor-pointer select-none py-1">
 						<input
 							disabled={isLoading}
 							type="checkbox"
 							checked={isSrmStudent}
 							onChange={(e) => setIsSrmStudent(e.target.checked)}
-							style={{ minWidth: "unset", width: "1rem", height: "1rem" }}
+							className="w-4 h-4 accent-purple-500 cursor-pointer"
+							style={{ width: "1rem", height: "1rem" }}
 						/>
 						SRM KTR student
 					</label>
@@ -124,13 +122,13 @@ export default function Register() {
 					<button
 						disabled={isLoading}
 						type="submit"
-						className="mt-2 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 disabled:opacity-50"
+						className="mt-1 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 disabled:opacity-50 cursor-pointer"
 					>
 						{isLoading ? "Creating account..." : "Register"}
 					</button>
 				</form>
 
-				<p className="mt-5 text-center text-sm text-white/40">
+				<p className="mt-4 text-center text-sm text-white/40">
 					Already registered?{" "}
 					<a href="/auth" className="text-indigo-400 hover:text-indigo-300 underline">
 						Login

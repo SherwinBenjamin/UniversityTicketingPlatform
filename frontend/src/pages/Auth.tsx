@@ -41,7 +41,6 @@ export default function Auth() {
 						value={email}
 						required
 						onChange={(e) => setEmail(e.target.value)}
-						style={{ minWidth: "unset" }}
 					/>
 					<input
 						disabled={isLoading}
@@ -50,7 +49,6 @@ export default function Auth() {
 						value={password}
 						required
 						onChange={(e) => setPassword(e.target.value)}
-						style={{ minWidth: "unset" }}
 					/>
 
 					{errorMsg && (
