@@ -20,9 +20,9 @@ async function seed() {
 	try {
 		console.log("Starting seed...");
 
-		// Staff
-		const adminId = uuidv4();
-		const viewerId = uuidv4();
+		// Staff — fixed IDs so ON CONFLICT (id) is idempotent
+		const adminId = "a1000000-0000-0000-0000-000000000001";
+		const viewerId = "a1000000-0000-0000-0000-000000000002";
 		const adminPassword = await bcrypt.hash("Admin@demo123", 10);
 		const viewerPassword = await bcrypt.hash("Viewer@demo123", 10);
 
@@ -32,7 +32,7 @@ async function seed() {
 			VALUES
 				($1, 'Demo Admin', 'admin@milandemo.com', $2, '9000000001', 'Milan Core', 'admin', true, NOW()),
 				($3, 'Demo Viewer', 'viewer@milandemo.com', $4, '9000000002', 'Milan Core', 'viewer', true, NOW())
-			ON CONFLICT (email) DO NOTHING
+			ON CONFLICT (id) DO NOTHING
 		`,
 			[adminId, adminPassword, viewerId, viewerPassword]
 		);
