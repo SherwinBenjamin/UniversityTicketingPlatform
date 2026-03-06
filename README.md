@@ -62,6 +62,26 @@ A full-stack event registration and ticketing system built for **Milan 2024**, t
 | Logging | Discord Webhooks, Pino |
 | DevOps | Docker, Docker Compose, Nginx |
 
+## System Diagrams
+
+### Core diagrams (inline)
+
+#### System Architecture
+
+![University Ticketing Platform System Architecture](docs/diagrams/2-system-architecture.png)
+
+Source: [2-system-architecture.excalidraw](docs/diagrams/2-system-architecture.excalidraw)
+
+#### Ticket Booking Flow (AWS SQS)
+
+![Ticket Booking Flow (AWS SQS)](docs/diagrams/4-ticket-booking-flow.png)
+
+Source: [4-ticket-booking-flow.excalidraw](docs/diagrams/4-ticket-booking-flow.excalidraw)
+
+### Detailed reference diagrams
+
+- [User Authentication Flow (PNG)](docs/diagrams/3-user-auth-flow.png) | [Source](docs/diagrams/3-user-auth-flow.excalidraw)
+- [Admin/Staff Workflow (PNG)](docs/diagrams/1-admin-staff-workflow.png) | [Source](docs/diagrams/1-admin-staff-workflow.excalidraw)
 ## Repository Structure
 
 ```
@@ -183,3 +203,5 @@ Core tables managed via Sequelize migrations:
 **Sherwin Benjamin** — Full Stack Developer
 SRM Institute of Science and Technology, Kattankulathur — B.Tech CSE 2024
 [GitHub](https://github.com/SherwinBenjamin)
+
+
